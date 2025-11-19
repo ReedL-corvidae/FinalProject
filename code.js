@@ -1,15 +1,22 @@
 import { Toolbox } from "./toolbox.js";
-
+import { Game } from "./game.js";
+import { GameOver } from "./gameOver.js";
+import { TitleScreen } from "./titlescreen.js";
 
 let canvas = document.getElementById("myCanvas");
 let pencil = canvas.getContext("2d"); // This gives you the drawing context, like a pencil
+
 let toolbox = new Toolbox();
 
-let myFavoriteLetters = ["a", "b", "c"];
+let game = new Game();
+let titlescreen = new TitleScreen();
+let gameOver = new GameOver();
+
+let state = titlescreen;
 
 //game loop
 function gameLoop(){
-
+    state.update();
 }
 setInterval(gameLoop, 50);
 
