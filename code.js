@@ -1,22 +1,35 @@
 import { Toolbox } from "./toolbox.js";
-import { Game } from "./game.js";
-import { GameOver } from "./gameOver.js";
-import { TitleScreen } from "./titlescreen.js";
+import { Game } from "./states/game.js";
+import { GameOver } from "./states/gameOver.js";
+import { TitleScreen } from "./states/titlescreen.js";
 
 let canvas = document.getElementById("myCanvas");
 let pencil = canvas.getContext("2d"); // This gives you the drawing context, like a pencil
 
 let toolbox = new Toolbox();
 
-let game = new Game();
-let titlescreen = new TitleScreen();
-let gameOver = new GameOver();
+let game = new Game(canvas, pencil);
+let title = new TitleScreen(canvas, pencil);
+let gameOver = new GameOver(canvas, pencil);
 
-let state = titlescreen;
+let state = title;
 
 //game loop
 function gameLoop(){
-    state.update();
+    
+    pencil.clearRect(0, 0, canvas.width, canvas.height);
+
+    let command = state.update();
+
+    if(command == "title" ){
+        state = title;
+    }
+    if(command == "gameOver"){
+        state = gameOver;
+    }
+    if(command == "game"){
+        state == game;
+    }
 }
 setInterval(gameLoop, 50);
 
@@ -28,11 +41,11 @@ setInterval(gameLoop, 50);
 //     console.log(toolbox.getRandomItem(myFavoriteLetters));
 // }
 
-let shuffled = toolbox.shuffleArray(myFavoriteLetters);
-console.log(shuffled);
+// let shuffled = toolbox.shuffleArray(myFavoriteLetters);
+// console.log(shuffled);
 
-let colors = toolbox.getRandomColor();
-console.log(colors);
+// let colors = toolbox.getRandomColor();
+// console.log(colors);
 
 //Rectangle Draw
 
