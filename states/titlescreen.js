@@ -18,16 +18,17 @@ export class Title {
 
         //bind the function; this becomes something different in the callback
         //"onKeyPressed", otherwise.
-        this.onKeyPressed = this.onKeyPressed.bind(this);
+        // this.onKeyPressed = this.onKeyPressed.bind(this);
         this.onClicked = this.onClicked.bind(this);
-
-        document.addEventListener("keypress", this.onKeyPressed )
-        document.addEventListener("click", this.onClicked)
+        
+        this.update();
+        // document.addEventListener("keypress", this.onKeyPressed )
+        document.addEventListener("click", this.onClicked);
     }
 
-    onKeyPressed() {
-        this.changeToGame = true;
-    }
+    // onKeyPressed() {
+    //     this.changeToGame = true;
+    // }
     
     onClicked(event) {
         let isHitButton = this.toolbox.isWithinRect(

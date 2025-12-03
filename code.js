@@ -14,7 +14,7 @@ let game = new Game(canvas, pencil);
 let gameOver = new GameOver(canvas, pencil);
 let title = new Title(canvas, pencil);
 
-let state = game;
+let state = title;
 
 function gameLoop() {
 

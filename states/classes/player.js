@@ -1,7 +1,6 @@
 export class Player{
     constructor(x, y, width, height, speed, upKey, downKey, canvas) {
         this.canvas = canvas;
-        //this.pencil = pencil;
         this.x = x;
         this.y = y;
         this.width = width;
@@ -13,6 +12,7 @@ export class Player{
         this.downKey = downKey;
     }
 
+    //allows movement for the player
     updateMove(){
         if (this.moveUp){
             this.y -= this.speed;
@@ -27,21 +27,22 @@ export class Player{
             this.y = this.canvas.height - this.height;
         }
     }
-
+    //draws the player
     draw(pencil){
         pencil.fillStyle = "black";
         pencil.fillRect(this.x, this.y, this.width, this.height);
     }
+    //detects keyinput and acts accordingly
+    //key down
     handleKeyDown(key){
         if (key == this.upKey) {
             this.moveUp = true;
-            console.log("up");
         }
         if (key == this.downKey) {
             this.moveDown = true;
-            console.log("down");
         }
     }
+    //key up
     handleKeyUp(key){
         if (key == this.upKey){
             this.moveUp = false;
