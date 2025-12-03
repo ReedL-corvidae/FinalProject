@@ -1,6 +1,8 @@
 import { Game } from "./states/game.js";
 import { GameOver } from "./states/gameOver.js";
 import { Title } from "./states/titlescreen.js";
+import { Bullet } from "./states/classes/bullet.js";
+import { Player } from "./states/classes/player.js";
 import { Toolbox } from "./toolbox.js";
 
 let canvas = document.getElementById("myCanvas");
@@ -12,7 +14,7 @@ let game = new Game(canvas, pencil);
 let gameOver = new GameOver(canvas, pencil);
 let title = new Title(canvas, pencil);
 
-let state = title;
+let state = game;
 
 function gameLoop() {
 
