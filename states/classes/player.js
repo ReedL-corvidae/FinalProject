@@ -1,7 +1,7 @@
 import { Bullet } from "./bullet.js";
 
 export class Player{
-    constructor(x, y, width, height, speed, upKey, downKey, canvas) {
+    constructor(x, y, width, height, speed, upKey, downKey, direction, canvas) {
         //drawing variables
         this.canvas = canvas;
         this.x = x;
@@ -17,6 +17,7 @@ export class Player{
         this.downKey = downKey;
 
         this.bulletOffset = 12;
+        this.direction = direction;
     }
 
     //allows movement for the player
@@ -65,7 +66,7 @@ export class Player{
         let bulletX;
 
         if(this.direction == 1){
-            bulletX = this.x + this.width;
+            bulletX = this.x + this.width + 6;
         } else {
             bulletX = this.x - this.bulletOffset;
         }
