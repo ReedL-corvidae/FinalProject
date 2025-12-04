@@ -15,6 +15,8 @@ export class Player{
         this.moveDown = false;
         this.upKey = upKey;
         this.downKey = downKey;
+
+        this.bulletOffset = 12;
     }
 
     //allows movement for the player
@@ -60,7 +62,14 @@ export class Player{
 
     shoot(){
         //sets the bullet to from the player
-        let bulletX = this.x + (this.direction == 1 ? this.width : - 10);
+        let bulletX;
+
+        if(this.direction == 1){
+            bulletX = this.x + this.width;
+        } else {
+            bulletX = this.x - this.bulletOffset;
+        }
+
         let bulletY = this.y + this.height / 2;
 
         return new Bullet(bulletX, bulletY, this.direction);

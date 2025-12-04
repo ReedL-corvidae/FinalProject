@@ -1,10 +1,15 @@
 import { Player } from "./classes/player.js";
 export class Game{
     
+    
+
     canvas;
     pencil;
 
     constructor(canvas) {
+
+        console.log("draw >> bullets =" + this.bullets);
+
         this.canvas = canvas;
         this.pencil = canvas.getContext("2d");
 
@@ -12,10 +17,13 @@ export class Game{
         //creates the player characters
         this.player1 = new Player(20, canvas.height/2-40, 20, 50, 5, "w", "s", canvas);
         this.player2 = new Player(canvas.width - 40, canvas.height/2-40, 20, 50, 5, "ArrowUp", "ArrowDown", canvas);
+        
+        this.bullets = [];
+        
         this.setupInputs();
         this.update();
 
-        this.bullets = [];
+   
     }
     //properly detects player inputs for movement
     setupInputs(){
