@@ -58,7 +58,7 @@ export class Game{
         this.player1.draw(this.pencil);
         this.player2.draw(this.pencil);
 
-        this.bullets.forEach(bullet => bullet.draw(this.pencil));
+        this.bullets.forEach(bullet => bullet.draw(this.pencil) & bullet.update());
 
         this.bullets = this.bullets.filter(bullet => bullet.x > 0 && bullet.x <  this.canvas.width);
     }
