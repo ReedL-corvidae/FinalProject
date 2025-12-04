@@ -13,8 +13,8 @@ export class Game{
 
         console.log("constructor");
         //creates the player characters
-        this.player1 = new Player(20, canvas.height/2-40, 20, 50, 5, "w", "s", 1, canvas);
-        this.player2 = new Player(canvas.width - 40, canvas.height/2-40, 20, 50, 5, "ArrowUp", "ArrowDown", -1, canvas);
+        this.player1 = new Player(20, canvas.height/2-40, 20, 48, 5, "w", "s", 1, canvas);
+        this.player2 = new Player(canvas.width - 40, canvas.height/2-40, 20, 48, 5, "ArrowUp", "ArrowDown", -1, canvas);
         
         this.bullets = [];
         
@@ -58,6 +58,7 @@ export class Game{
         this.player1.draw(this.pencil);
         this.player2.draw(this.pencil);
 
+        //draws bullets and adjusts bullet array
         this.bullets.forEach(bullet => bullet.draw(this.pencil) & bullet.update());
 
         this.bullets = this.bullets.filter(bullet => bullet.x > 0 && bullet.x <  this.canvas.width);
