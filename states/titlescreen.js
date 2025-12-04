@@ -42,7 +42,7 @@ export class Title {
     update() {
         this.pencil.fillStyle = "gray";
         this.pencil.font = "20px Georgia";
-        this.pencil.fillText("Title", 10, 50);
+        this.pencil.fillText("SHOOTOUT", 10, 50);
 
         this.pencil.fillStyle = "pink";
         this.pencil.fillRect(

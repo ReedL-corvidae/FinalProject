@@ -13,10 +13,11 @@ export class Game{
         this.player1 = new Player(20, canvas.height/2-40, 20, 50, 5, "w", "s", canvas);
         this.player2 = new Player(canvas.width - 40, canvas.height/2-40, 20, 50, 5, "ArrowUp", "ArrowDown", canvas);
         this.setupInputs();
-        //this.start();
         this.update();
+
+        this.bullets = [];
     }
-    //properly detects player inputs
+    //properly detects player inputs for movement
     setupInputs(){
         console.log("inputs");
         document.addEventListener("keydown", e =>{
@@ -26,7 +27,18 @@ export class Game{
         document.addEventListener("keyup", e => {
             this.player1.handleKeyUp(e.key);
             this.player2.handleKeyUp(e.key);
-        })
+        });
+
+        window.addEventListener("keydown", (e) => {
+            if (e.key == "d" || e.key == "D"){
+                let bullet = this.player1.shoot();
+                this.bullets.push(bullet);
+            }
+            if (e.key == "ArrowLeft"){
+                let bullet = this.player2.shoot();
+                this.bullets.push(bullet);
+            }
+        });
     }
     //draws players and such
     update(){
@@ -40,5 +52,8 @@ export class Game{
         this.player1.draw(this.pencil);
         this.player2.draw(this.pencil);
 
+        this.bullets.forEach(bullet => bullet.draw(this.pencil));
+
+        this.bullets = this.bullets.filter(bullet => bullet.x > 0 && bullet.x <  this.canvas.width);
     }
 }

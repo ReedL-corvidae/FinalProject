@@ -1,10 +1,15 @@
+import { Bullet } from "./bullet.js";
+
 export class Player{
     constructor(x, y, width, height, speed, upKey, downKey, canvas) {
+        //drawing variables
         this.canvas = canvas;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+
+        //movement variables
         this.speed = speed;
         this.moveUp = false;
         this.moveDown = false;
@@ -27,6 +32,7 @@ export class Player{
             this.y = this.canvas.height - this.height;
         }
     }
+
     //draws the player
     draw(pencil){
         pencil.fillStyle = "black";
@@ -51,4 +57,13 @@ export class Player{
             this.moveDown = false;
         }
     }
+
+    shoot(){
+        //sets the bullet to from the player
+        let bulletX = this.x + (this.direction == 1 ? this.width : - 10);
+        let bulletY = this.y + this.height / 2;
+
+        return new Bullet(bulletX, bulletY, this.direction);
+    }
+
 }
