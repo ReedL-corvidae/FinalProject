@@ -26,6 +26,7 @@ function gameLoop() {
         state = title;
     }
     if(command == "gameOver") {
+        gameOver.setWinner(game.winner);
         state = gameOver;
     }
     if(command == "game") {

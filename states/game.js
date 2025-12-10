@@ -6,7 +6,7 @@ export class Game{
 
     canvas;
     pencil;
-    changeToGame = false;
+    changeToOver = false;
 
     constructor(canvas) {
 
@@ -152,12 +152,19 @@ export class Game{
 
     //Checks if player's health is below or equal to 0, if it is, it changes the changeToGame to true
 
-    if(this.player1.health <=0 || this.player2.health <= 0){
-        this.changeToGame = true;
+    if(this.player1.health <=0 || this.player2.health <= 0) {
+        this.changeToOver = true;
     }
     //changes the screen to the game over screen.
-    if(this.changeToGame) {
-            this.changeToGame = false; //consume it; so we reset the title screen for next time.
+    if(this.changeToOver) {
+            this.changeToOver = false; //consume it; so we reset the title screen for next time.
+
+            if(this.player1.health <= 0){
+                this.winner = "Player 2";
+            } else { 
+                this.winner = "Player 1";
+            }
+
             return "gameOver";
         }
 
