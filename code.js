@@ -45,3 +45,4 @@ setInterval(gameLoop, 1000 / 60);
 //That weird little stutter when restarting the game
 //Being able to double shoot if shooting within the first few seconds
 //Optimising the big bullet so it didnt just call for two at once.
+//Overall optimisation and messy coding
