@@ -7,7 +7,7 @@ export class GameOver{
     changeToTitle = false;
     toolbox = new Toolbox();
 
-    restartButtonX = 200;
+    restartButtonX = 260;
     restartButtonY = 300;
     restartButtonW = 100;
     restartButtonH = 50;
@@ -17,11 +17,15 @@ export class GameOver{
         this.pencil = pencil;
         this.winner = "";
 
+        this.endBackground = document.getElementById("endBackground");
+
         this.onClicked = this.onClicked.bind(this);
         
         this.update();
 
         document.addEventListener("click", this.onClicked);
+
+
     }
 
     onClicked(event) {
@@ -41,15 +45,21 @@ export class GameOver{
     update(){
         console.log("Game over");
 
-        this.pencil.fillStyle = "gray";
-        this.pencil.font = "20px Georgia";
-        this.pencil.fillText(this.winner + " wins!", 200, 200);
+        this.pencil.drawImage(endBackground, 0, 0, this.canvas.width, this.canvas.height);
 
-        this.pencil.fillStyle = "pink";
+        this.pencil.fillStyle = "White";
+        this.pencil.font = "40px Georgia";
+        this.pencil.fillText(this.winner + " wins!", 185, 200);
+
+        this.pencil.fillStyle = "Cyan";
         this.pencil.fillRect(
             this.restartButtonX, this.restartButtonY,
             this.restartButtonW, this.restartButtonH
         );
+
+        this.pencil.fillStyle = "Blue";
+        this.pencil.font = "20px Georgia";
+        this.pencil.fillText("Retry?", 283, 330);
 
         if(this.changeToTitle) {
             console.log("changing title!");

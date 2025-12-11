@@ -15,6 +15,7 @@ export class Title {
     constructor(canvas, pencil) {
         this.canvas = canvas;
         this.pencil = pencil;
+        this.titleBackground = document.getElementById("titleBackground");
 
         //bind the function; this becomes something different in the callback
         //"onKeyPressed", otherwise.
@@ -41,7 +42,9 @@ export class Title {
     }
 
     update() {
-        this.pencil.fillStyle = "Black";
+        this.pencil.drawImage(titleBackground, 0, 0, this.canvas.width, this.canvas.height);
+
+        this.pencil.fillStyle = "White";
         this.pencil.font = "40px Georgia";
         this.pencil.fillText("SHOOTOUT", 190, 150);
 
@@ -51,11 +54,11 @@ export class Title {
             this.startButtonW, this.startButtonH
         );
 
-        this.pencil.fillStyle = "Black";
+        this.pencil.fillStyle = "Blue";
         this.pencil.font = "20px Georgia";
         this.pencil.fillText("START", 269, 232);
 
-        this.pencil.fillStyle = "Black";
+        this.pencil.fillStyle = "White";
         this.pencil.font = "18px Georgia";
         this.pencil.fillText("Player 1 uses w and s to move up and down.", 130, 300);
         this.pencil.fillText("Player 1 uses d to shoot, a to dodge. Hold e to fire a special shot.", 50, 325);
