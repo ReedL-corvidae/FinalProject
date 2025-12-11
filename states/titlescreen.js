@@ -37,6 +37,7 @@ export class Title {
             this.startButtonW, this.startButtonH
         );
         this.changeToGame = isHitButton;
+        console.log("WHAT?");
     }
 
     update() {

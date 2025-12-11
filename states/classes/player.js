@@ -3,11 +3,14 @@ import { Bullet } from "./bullet.js";
 export class Player{
     constructor(x, y, width, height, speed, upKey, downKey, direction, canvas) {
         //drawing variables
+        this.pencil = canvas.getContext("2d");
         this.canvas = canvas;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+
+        this.pencil.imageSmoothingEnabled = false;
 
         //movement variables
         this.speed = speed;
@@ -38,12 +41,17 @@ export class Player{
         this.lastDodge = 0;
         this.dodgeDistance = 60;
 
+        //sprites
+        this.playerSprite = document.getElementById("playerIcon");
+        this.chargeSprite = document.getElementById("charging");
+
     }
 
     //allows movement for the player
     updateMove(){
 
         if (this.isCharging) {
+            this.pencil.drawImage(this.chargeSprite, this.x, this.y, this.width, this.height);
             return;
         }
 
@@ -63,8 +71,15 @@ export class Player{
 
     //draws the player
     draw(pencil){
-        pencil.fillStyle = "black";
-        pencil.fillRect(this.x, this.y, this.width, this.height);
+        // pencil.fillStyle = "black";
+        // pencil.fillRect(this.x, this.y, this.width, this.height);
+
+        //so this is originally meant to be a gif, but I found the squeezed sprite funny so its staying squeezed, i'd fix it if I werent the sole developer.
+         if (this.isCharging) {
+            this.pencil.drawImage(this.chargeSprite, this.x, this.y, this.width, this.height);
+         } else {
+            pencil.drawImage(this.playerSprite, this.x, this.y, this.width, this.height);
+         }
     }
     //detects keyinput and acts accordingly
     //key down
@@ -144,8 +159,8 @@ export class Player{
 
         let mega = new Bullet(bulletX, bulletY, this.direction);
 
-        mega.width = 30;
-        mega.height = 10;
+        mega.width = 50;
+        mega.height = 15;
         mega.speed = 12;
 
         return mega;

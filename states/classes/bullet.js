@@ -7,11 +7,13 @@ export class Bullet{
         this.x = x;
         this.y = y;
 
-        this.width = 10;
-        this.height = 6;
+        this.width = 24;
+        this.height = 16;
 
         this.speed = 7;
         this.direction = direction;
+
+        this.sprite = document.getElementById("bullet");
     }
 
     update(){
@@ -19,8 +21,9 @@ export class Bullet{
     }
 
     draw(pencil){
-        pencil.fillStyle = "red";
-        pencil.fillRect(this.x, this.y, this.width, this.height);
+        // pencil.fillStyle = "red";
+        // pencil.fillRect(this.x, this.y, this.width, this.height);
+            pencil.drawImage(this.sprite, this.x, this.y, this.width, this.height);  
     }
 
     offScreen(canvasWidth){

@@ -12,14 +12,18 @@ export class Game{
 
         this.canvas = canvas;
         this.pencil = canvas.getContext("2d");
+        this.pencil.imageSmoothingEnabled = false;
 
         console.log("constructor");
         //creates the player characters
-        this.player1 = new Player(20, canvas.height/2-40, 20, 48, 5, "w", "s", 1, canvas);
-        this.player2 = new Player(canvas.width - 40, canvas.height/2-40, 20, 48, 5, "ArrowUp", "ArrowDown", -1, canvas);
+        this.player1 = new Player(20, canvas.height/2-40, 40, 35, 5, "w", "s", 1, canvas);
+        this.player2 = new Player(canvas.width - 55, canvas.height/2-40, 40, 35, 5, "ArrowUp", "ArrowDown", -1, canvas);
         
         //store thine bullets
         this.bullets = [];
+
+        //sprites
+        this.heartSprite = document.getElementById("heart");
 
         //makes everything, literally everything work.
         
@@ -90,12 +94,14 @@ export class Game{
 
     drawHealth() {
         for(let i = 0; i < this.player1.health; i++){
-            this.pencil.fillStyle = "red";
-            this.pencil.fillRect(10 + i * 20, this.canvas.height - 20, 15, 15);
+            // this.pencil.fillStyle = "red";
+            // this.pencil.fillRect(10 + i * 20, this.canvas.height - 20, 15, 15);
+            this.pencil.drawImage(this.heartSprite, 10 + i * 20, this.canvas.height - 20, 30, 30);
         }
         for(let i = 0; i<this.player2.health;i++){
-            this.pencil.fillstyle = "red";
-            this.pencil.fillRect(this.canvas.width - 10 - (i + 1) * 20, this.canvas. height - 20, 15, 15);
+            // this.pencil.fillstyle = "red";
+            // this.pencil.fillRect(this.canvas.width - 10 - (i + 1) * 20, this.canvas. height - 20, 15, 15);
+            this.pencil.drawImage(this.heartSprite, this.canvas.width - 10 - (i + 1) * 20, this.canvas.height - 20, 30, 30);
         }
     }
 
