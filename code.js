@@ -36,3 +36,12 @@ function gameLoop() {
 }
 
 setInterval(gameLoop, 1000 / 60);
+
+
+//things to note that I WOULD fix if I had the time.
+
+//charging.gif not working.
+//An error with button detection escaping out of its designated state leading to various errors such as auto restarting, broken health tracking, etc.
+//That weird little stutter when restarting the game
+//Being able to double shoot if shooting within the first few seconds
+//Optimising the big bullet so it didnt just call for two at once.

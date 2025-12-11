@@ -12,6 +12,8 @@ export class Game{
 
         this.canvas = canvas;
         this.pencil = canvas.getContext("2d");
+
+        //remove the icky anti-aliasing
         this.pencil.imageSmoothingEnabled = false;
 
         console.log("constructor");
@@ -32,7 +34,7 @@ export class Game{
         this.update();
    
     }
-    //properly detects player inputs for movement
+    //properly detects player inputs for movement and shooting
     setupInputs(){
         console.log("inputs");
         document.addEventListener("keydown", e =>{
@@ -127,12 +129,16 @@ export class Game{
     update(){
         console.log("In game!");
 
+        //Move the players on their own time.
         this.player1.updateMove();
         this.player2.updateMove();
+
+        //clear canvas and background images
 
          this.pencil.clearRect(0, 0, this.canvas.width, this.canvas.height);
          this.pencil.drawImage(gameBackground, 0, 0, this.canvas.width, this.canvas.height);
 
+         //draw the players
         this.player1.draw(this.pencil);
         this.player2.draw(this.pencil);
 
@@ -141,6 +147,7 @@ export class Game{
 
         this.bullets = this.bullets.filter(bullet => {
 
+        //collision detection between bullets and individual players
         if(this.toolbox.isWithinRect(bullet.x, bullet.y, this.player1.x, this.player1.y, this.player1.width, this.player1.height)){
 
             console.log("player 1 is hit");
