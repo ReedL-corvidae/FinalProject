@@ -24,6 +24,7 @@ export class Game{
 
         //sprites
         this.heartSprite = document.getElementById("heart");
+        this.background = document.getElementById("gameBackground");
 
         //makes everything, literally everything work.
         
@@ -130,6 +131,7 @@ export class Game{
         this.player2.updateMove();
 
          this.pencil.clearRect(0, 0, this.canvas.width, this.canvas.height);
+         this.pencil.drawImage(gameBackground, 0, 0, this.canvas.width, this.canvas.height);
 
         this.player1.draw(this.pencil);
         this.player2.draw(this.pencil);
@@ -140,7 +142,7 @@ export class Game{
         this.bullets = this.bullets.filter(bullet => {
 
         if(this.toolbox.isWithinRect(bullet.x, bullet.y, this.player1.x, this.player1.y, this.player1.width, this.player1.height)){
-                this.player1.health - 2;
+
             console.log("player 1 is hit");
             this.player1.health--;
             console.log(this.player1.health);

@@ -20,7 +20,7 @@ export class Player{
         this.downKey = downKey;
 
         //bullet placement and direction
-        this.bulletOffset = 12;
+        this.bulletOffset = 16;
         this.direction = direction;
 
         //Mega bullet things too
@@ -143,7 +143,7 @@ export class Player{
         if(this.direction == 1){
             bulletX = this.x + this.width + 6;
         } else {
-            bulletX = this.x - this.bulletOffset;
+            bulletX = this.x - this.bulletOffset - 10;
         }
 
         let bulletY = this.y + this.height / 2;
